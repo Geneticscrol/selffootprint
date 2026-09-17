@@ -15,7 +15,7 @@
   <a href="ETHICS.md"><img src="https://img.shields.io/badge/use-authorized%20self--audit%20only-111?style=flat-square" alt="Authorized use"/></a>
   <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?style=flat-square" alt="Python 3.11+"/>
   <img src="https://img.shields.io/badge/runs%20on-localhost-6ee7a8?style=flat-square" alt="localhost"/>
-  <img src="https://img.shields.io/badge/version-0.1.0-8aa08c?style=flat-square" alt="v0.1.0"/>
+  <img src="https://img.shields.io/badge/version-0.2.0-8aa08c?style=flat-square" alt="v0.2.0"/>
 </p>
 
 <p align="center">
@@ -54,7 +54,7 @@ It is not a stalking kit. There is no “investigate anyone” mode. The consent
 
 <img src="docs/architecture.svg" alt="Architecture: UI → FastAPI → collectors → scoring" width="920"/>
 
-> Want a live walkthrough? Record a 60–90s clip of your own self-scan and drop it at `docs/demo.mp4`.
+> Want a live walkthrough? Record a 60–90s clip of your own self-scan and drop it at [`docs/demo.mp4`](docs/demo.mp4).
 
 ## Quick start
 
@@ -79,14 +79,6 @@ python -m pip install -r requirements.txt
 python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8787
 ```
 
-If you previously hit `ModuleNotFoundError: dns`:
-
-```bat
-python -m pip install dnspython
-```
-
-DNS still works without it (falls back to DNS-over-HTTPS).
-
 Open [http://127.0.0.1:8787](http://127.0.0.1:8787). Tick the consent box. Scan **your** identifiers.
 
 ### Docker
@@ -104,28 +96,25 @@ Collectors are passive, public, or operator-initiated. People-search sites that 
 |---|---|---|
 | Gravatar | email | Public avatar tied to the email hash |
 | GitHub | email or username | Public profile fields, commit emails on public events |
-| Username probe | handle | Existence check on a small allowlist (GitHub, GitLab, HN, HF, …) |
+| Username probe | handle | Existence check on a small allowlist |
 | DNS / DoH + RDAP | domain | Records and whether a registrant role is still published |
 | crt.sh | domain | Extra hostnames from certificate transparency |
 | Wayback CDX | domain | Whether the Archive still has snapshots |
 | XposedOrNot | email | Public breach collections (no key) |
 | Have I Been Pwned | email | Optional, needs `HIBP_API_KEY` |
-| India + global brokers | name / phone / email | Search + opt-out URLs (Truecaller, Naukri, Justdial, IntelX, …) |
+| India + global brokers | name / phone / email | Search + opt-out URLs |
+| Public PDFs | full name | Operator-opened `filetype:pdf` searches. Files are not downloaded. |
+| Unit pack | team handles | Flags a handle that appears more than once on an authorized roster |
 
 Every finding must include a `source` URL. The scorer drops anything that does not.
 
-### Scoring
+### Re-scan diffs
 
-| Severity | Weight | Examples |
-|---|---|---|
-| critical | +35 | Email in a public breach set |
-| high | +18 | Commit email on GitHub events |
-| medium | +8 | Gravatar, extra CT hostnames, handle cluster |
-| low | +3 | Public DNS, a single username hit |
+Each scan is fingerprinted from the identifiers you entered and stored locally in `scans/<fingerprint>.json` (gitignored). The next run on the same set shows **added / removed / unchanged** finding IDs.
 
-Bands: `0–19` low · `20–44` moderate · `45–69` high · `70–100` critical.
+### Signed HTML report
 
-The plan is split into **this week** (critical/high) and **this month** (everything else). Export is Markdown via `/api/scan.md`.
+The UI exports Markdown (`/api/scan.md`) and a signed HTML file (`/api/scan.html`). The signature is HMAC-SHA256 over fingerprint + score + finding IDs, keyed by `REPORT_SIGNING_KEY` or a generated `scans/.signing_key`.
 
 ## What it refuses to do
 
@@ -135,68 +124,16 @@ Read [`ETHICS.md`](ETHICS.md) before you add a collector.
 - No face search
 - No scraping Truecaller, Facebook, Instagram, Naukri, or data brokers
 - No dark-web crawling
-- No “related people” graph
 - Default bind address is `127.0.0.1`
 
-If you fork this and remove the consent gate, you are no longer shipping SelfFootprint.
-
-## Architecture
-
-```
-browser  →  FastAPI (localhost:8787)
-                ├─ collectors.py   public checks + manual link pack
-                ├─ scoring.py      weights + playbooks
-                └─ report          JSON or Markdown
-```
-
-Optional: set `OLLAMA_URL` in `.env` when you want a local model to rewrite the plan in plain language. v0.1 ships the deterministic playbooks either way.
-
 ## Configuration
-
-Copy [`.env.example`](.env.example):
 
 | Variable | Required | Purpose |
 |---|---|---|
 | `HIBP_API_KEY` | no | Official Have I Been Pwned v3 key |
 | `OLLAMA_URL` | no | e.g. `http://127.0.0.1:11434` |
-| `OLLAMA_MODEL` | no | default `llama3.2` |
-| `HOST` / `PORT` | no | keep `127.0.0.1` / `8787` unless you know why |
-
-No telemetry. No account system. Scan payloads are not written to disk.
-
-## Project layout
-
-```
-selffootprint/
-├── AGENT.md              prompt you paste into an AI coding session
-├── ETHICS.md             acceptable use — do not delete
-├── SPEC.md               product contract for contributors and agents
-├── app/
-│   ├── main.py           FastAPI
-│   ├── collectors.py     public collectors
-│   ├── scoring.py        score + remediation playbooks
-│   └── templates/        single-page UI
-├── data/
-│   ├── brokers.json      India + global opt-out pack
-│   └── platforms.json    username allowlist
-└── docs/                 screenshots used in this README
-```
-
-## Development
-
-```bash
-python -m uvicorn app.main:app --reload --host 127.0.0.1 --port 8787
-```
-
-Smoke a scan without the browser:
-
-```bash
-curl -s http://127.0.0.1:8787/health
-```
-
-Working with an AI coding agent? Paste [`AGENT.md`](AGENT.md) at the top of the session.
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`SECURITY.md`](SECURITY.md).
+| `HOST` / `PORT` | no | keep `127.0.0.1` / `8787` |
+| `REPORT_SIGNING_KEY` | no | HMAC key for signed HTML |
 
 ## Roadmap
 
@@ -204,30 +141,12 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) and [`SECURITY.md`](SECURITY.md).
 - [x] Cited collectors + Markdown export
 - [x] India broker / opt-out pack
 - [x] DNS works without `dnspython`
-- [ ] 90-second demo video in `docs/demo.mp4`
-- [ ] Scheduled re-scan with a diff
-- [ ] Unit pack: shared-handle collision across a small team
-- [ ] Public-PDF filename collision checks (government docs only)
-- [ ] Signed HTML report
-
-## FAQ
-
-**Can I scan someone else?**  
-Only with written authorization you keep *outside* this tool. The default and intended use is you, scanning you.
-
-**Does this replace Have I Been Pwned / Maigret / Clearfront?**  
-No. Those tools look outward or cover thousands of sites. SelfFootprint is the inward loop: score + remediation + India-specific manual checks, on localhost.
-
-**Why are some results “skipped”?**  
-Rate limits (GitHub), missing optional keys (HIBP), or a slow third party (Wayback). Skips are listed; they are not silent failures.
-
-**Is the score scientific?**  
-It is a triage number so you know where to start. Treat the findings and the plan as the product, not the integer.
+- [x] Re-scan diff vs last local snapshot
+- [x] Unit pack: shared-handle collision
+- [x] Public-PDF search pack (links only)
+- [x] Signed HTML report (HMAC-SHA256)
+- [ ] 90-second demo video in `docs/demo.mp4` (record locally)
 
 ## License
 
 Apache License 2.0. See [`LICENSE`](LICENSE).
-
----
-
-<p align="center">Scan yourself first. Publish the demo second.</p>
