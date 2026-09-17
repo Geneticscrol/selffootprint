@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420" role="img" aria-label="SelfFootprint architecture">
+  <rect width="1100" height="420" fill="#0c0f0d"/>
+  <text x="24" y="36" fill="#c6f54d" font-family="Segoe UI, sans-serif" font-size="14" letter-spacing="2">DATA NEVER LEAVES THIS MACHINE EXCEPT TO PUBLIC APIS YOU TRIGGER</text>
+  <rect x="24" y="70" width="200" height="90" fill="#141a16" stroke="#c6f54d"/>
+  <text x="44" y="108" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="14">Browser UI</text>
+  <text x="44" y="130" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">consent + export</text>
+  <rect x="280" y="70" width="200" height="90" fill="#141a16" stroke="#243028"/>
+  <text x="300" y="108" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="14">FastAPI</text>
+  <text x="300" y="130" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">/api/scan  localhost</text>
+  <rect x="536" y="70" width="200" height="90" fill="#141a16" stroke="#243028"/>
+  <text x="556" y="108" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="14">Collectors</text>
+  <text x="556" y="130" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">cited, passive only</text>
+  <rect x="792" y="70" width="280" height="90" fill="#141a16" stroke="#243028"/>
+  <text x="812" y="108" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="14">Scoring + playbooks</text>
+  <text x="812" y="130" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">0–100 · this week / month</text>
+  <path d="M224 115 H280" stroke="#c6f54d" stroke-width="2"/>
+  <path d="M480 115 H536" stroke="#c6f54d" stroke-width="2"/>
+  <path d="M736 115 H792" stroke="#c6f54d" stroke-width="2"/>
+  <rect x="24" y="210" width="1052" height="170" fill="#101511" stroke="#243028"/>
+  <text x="44" y="240" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12" letter-spacing="1">PUBLIC COLLECTORS</text>
+  <text x="44" y="272" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="13">Gravatar · GitHub API · username allowlist · DNS / DoH · RDAP · crt.sh · Wayback · XposedOrNot · optional HIBP</text>
+  <text x="44" y="304" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="13">Manual only (links, not scrapers): Truecaller · Justdial · Naukri · LinkedIn · IntelX · registrar opt-outs</text>
+  <text x="44" y="344" fill="#c6f54d" font-family="Segoe UI, sans-serif" font-size="13">Hard rule: a finding without a source URL is deleted before it reaches the report.</text>
+</svg>
