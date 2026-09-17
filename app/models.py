@@ -9,8 +9,10 @@ class ScanRequest(BaseModel):
     phones: list[str] = Field(default_factory=list)
     domains: list[str] = Field(default_factory=list)
     city: str = ""
+    team_handles: list[str] = Field(default_factory=list)
+    save_snapshot: bool = True
 
-    @field_validator("emails", "usernames", "phones", "domains", mode="before")
+    @field_validator("emails", "usernames", "phones", "domains", "team_handles", mode="before")
     @classmethod
     def split_and_clean(cls, v):
         if v is None:
@@ -50,3 +52,6 @@ class ScanReport(BaseModel):
     plan: list[str]
     manual_checks: list[ManualCheck]
     skipped: list[str] = Field(default_factory=list)
+    fingerprint: str = ""
+    signature: str = ""
+    diff: dict | None = None
