@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="900" viewBox="0 0 1280 900" role="img" aria-label="SelfFootprint report screen">
+  <rect width="1280" height="900" fill="#0c0f0d"/>
+  <rect x="40" y="24" width="1200" height="36" rx="8" fill="#101511" stroke="#243028"/>
+  <circle cx="62" cy="42" r="6" fill="#ff6b4a"/>
+  <circle cx="82" cy="42" r="6" fill="#f0c14a"/>
+  <circle cx="102" cy="42" r="6" fill="#6ee7a8"/>
+  <text x="130" y="47" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="13">report · score 47 · band HIGH</text>
+  <rect x="72" y="84" width="1136" height="760" fill="#141a16" stroke="#243028"/>
+  <text x="100" y="140" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="56" font-weight="700">47</text>
+  <text x="100" y="168" fill="#ff8a5b" font-family="Segoe UI, sans-serif" font-size="12" letter-spacing="2">HIGH</text>
+  <rect x="980" y="112" width="190" height="40" fill="#c6f54d"/>
+  <text x="1004" y="137" fill="#111" font-family="Segoe UI, sans-serif" font-size="14" font-weight="700">Export Markdown</text>
+  <text x="100" y="214" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="18">Plan</text>
+  <rect x="100" y="228" width="1070" height="110" fill="#0b0e0c" stroke="#243028"/>
+  <text x="118" y="256" fill="#c6f54d" font-family="Consolas, monospace" font-size="13">This week:</text>
+  <text x="118" y="278" fill="#e6efe6" font-family="Consolas, monospace" font-size="13">• GitHub → Settings → Emails → keep my email private</text>
+  <text x="118" y="300" fill="#e6efe6" font-family="Consolas, monospace" font-size="13">• Rotate reused inbox passwords; enable a hardware key</text>
+  <text x="118" y="322" fill="#8aa08c" font-family="Consolas, monospace" font-size="13">This month: registrar WHOIS privacy · handle split · broker opt-outs</text>
+  <text x="100" y="372" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="18">Findings</text>
+  <rect x="100" y="390" width="1070" height="78" fill="#101511"/>
+  <rect x="100" y="390" width="4" height="78" fill="#ff6b4a"/>
+  <text x="120" y="416" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700">you@domain.in appears in public breach collections</text>
+  <text x="120" y="436" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">critical · breach</text>
+  <text x="120" y="456" fill="#c6f54d" font-family="Segoe UI, sans-serif" font-size="12">source</text>
+  <rect x="100" y="478" width="1070" height="78" fill="#101511"/>
+  <rect x="100" y="478" width="4" height="78" fill="#ff8a5b"/>
+  <text x="120" y="504" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700">Commit email visible on public GitHub events</text>
+  <text x="120" y="524" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">high · github</text>
+  <text x="120" y="544" fill="#c6f54d" font-family="Segoe UI, sans-serif" font-size="12">source</text>
+  <rect x="100" y="566" width="1070" height="78" fill="#101511"/>
+  <rect x="100" y="566" width="4" height="78" fill="#f0c14a"/>
+  <text x="120" y="592" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700">Certificate transparency lists extra hostnames</text>
+  <text x="120" y="612" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">medium · crtsh</text>
+  <text x="120" y="632" fill="#c6f54d" font-family="Segoe UI, sans-serif" font-size="12">source</text>
+  <rect x="100" y="654" width="1070" height="78" fill="#101511"/>
+  <rect x="100" y="654" width="4" height="78" fill="#6ee7a8"/>
+  <text x="120" y="680" fill="#e6efe6" font-family="Segoe UI, sans-serif" font-size="15" font-weight="700">Handle exists on GitHub, GitLab, and Hugging Face</text>
+  <text x="120" y="700" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">low · usernames</text>
+  <text x="120" y="720" fill="#c6f54d" font-family="Segoe UI, sans-serif" font-size="12">source</text>
+  <text x="100" y="770" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="13">Manual checks: Truecaller privacy center · Naukri resume index · Internet Archive takedown</text>
+  <text x="100" y="798" fill="#8aa08c" font-family="Segoe UI, sans-serif" font-size="12">Every finding carries a public source URL. No source → dropped.</text>
+</svg>
