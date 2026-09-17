@@ -1,0 +1,14 @@
+[
+  {"id": "github", "name": "GitHub", "url": "https://github.com/{u}", "ok": [200]},
+  {"id": "gitlab", "name": "GitLab", "url": "https://gitlab.com/{u}", "ok": [200]},
+  {"id": "codeberg", "name": "Codeberg", "url": "https://codeberg.org/{u}", "ok": [200]},
+  {"id": "reddit", "name": "Reddit", "url": "https://www.reddit.com/user/{u}/about.json", "ok": [200]},
+  {"id": "hackernews", "name": "Hacker News", "url": "https://news.ycombinator.com/user?id={u}", "ok": [200]},
+  {"id": "devto", "name": "dev.to", "url": "https://dev.to/{u}", "ok": [200]},
+  {"id": "keybase", "name": "Keybase", "url": "https://keybase.io/{u}", "ok": [200]},
+  {"id": "telegram", "name": "Telegram public", "url": "https://t.me/{u}", "ok": [200]},
+  {"id": "kaggle", "name": "Kaggle", "url": "https://www.kaggle.com/{u}", "ok": [200]},
+  {"id": "huggingface", "name": "Hugging Face", "url": "https://huggingface.co/{u}", "ok": [200]},
+  {"id": "npm", "name": "npm", "url": "https://www.npmjs.com/~{u}", "ok": [200]},
+  {"id": "pypi", "name": "PyPI", "url": "https://pypi.org/user/{u}/", "ok": [200]}
+]

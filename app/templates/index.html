@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SelfFootprint — authorized self-audit</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="mark">SF</span>
+      <div>
+        <h1>SelfFootprint</h1>
+        <p class="tag">Minimize what can be known about you.</p>
+      </div>
+    </div>
+    <p class="badge">localhost · authorized self-audit only</p>
+  </header>
+  <main>
+    <section class="panel">
+      <h2>Identifiers you own</h2>
+      <p class="hint">Nothing is stored on a server we control. Checks hit public endpoints from this machine.</p>
+      <form id="form">
+        <label>Full name <input name="full_name" placeholder="as it appears on public PDFs" /></label>
+        <label>City <input name="city" placeholder="only used for search-link templates" /></label>
+        <label>Emails <input name="emails" placeholder="you@domain, alt@domain" /></label>
+        <label>Usernames <input name="usernames" placeholder="handle1, handle2" /></label>
+        <label>Phones <input name="phones" placeholder="+91…" /></label>
+        <label>Domains <input name="domains" placeholder="yourdomain.in" /></label>
+        <label class="consent">
+          <input type="checkbox" name="consent" required />
+          These identifiers are mine, or I have written authorization to audit them. I will not use this tool to target other people.
+        </label>
+        <button type="submit" id="go">Run self-audit</button>
+      </form>
+    </section>
+    <section class="panel" id="out" hidden>
+      <div class="score-row">
+        <div>
+          <div class="score" id="score">—</div>
+          <div class="band" id="band"></div>
+        </div>
+        <div class="actions">
+          <button type="button" id="md">Export Markdown</button>
+        </div>
+      </div>
+      <h2>Plan</h2>
+      <pre id="plan" class="plan"></pre>
+      <h2>Findings</h2>
+      <div id="findings"></div>
+      <h2>Manual checks (you open these)</h2>
+      <div id="manual"></div>
+      <h2 class="muted">Skipped / failed collectors</h2>
+      <ul id="skipped" class="muted"></ul>
+    </section>
+  </main>
+  <footer>
+    Read <a href="https://github.com/Geneticscrol/selffootprint/blob/main/ETHICS.md">ETHICS.md</a>.
+    Apache-2.0. v0.1
+  </footer>
+  <script src="/static/app.js"></script>
+</body>
+</html>
