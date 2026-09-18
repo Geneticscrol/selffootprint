@@ -28,6 +28,7 @@
         <label>Usernames <input name="usernames" placeholder="handle1, handle2" /></label>
         <label>Phones <input name="phones" placeholder="+91…" /></label>
         <label>Domains <input name="domains" placeholder="yourdomain.in" /></label>
+        <label>Team handles (authorized roster) <input name="team_handles" placeholder="alice, bob — collision check only" /></label>
         <label class="consent">
           <input type="checkbox" name="consent" required />
           These identifiers are mine, or I have written authorization to audit them. I will not use this tool to target other people.
@@ -43,10 +44,13 @@
         </div>
         <div class="actions">
           <button type="button" id="md">Export Markdown</button>
+          <button type="button" id="html">Signed HTML</button>
         </div>
       </div>
       <h2>Plan</h2>
       <pre id="plan" class="plan"></pre>
+      <h2>Diff vs last snapshot</h2>
+      <pre id="diff" class="plan muted"></pre>
       <h2>Findings</h2>
       <div id="findings"></div>
       <h2>Manual checks (you open these)</h2>
@@ -57,7 +61,7 @@
   </main>
   <footer>
     Read <a href="https://github.com/Geneticscrol/selffootprint/blob/main/ETHICS.md">ETHICS.md</a>.
-    Apache-2.0. v0.1
+    MIT. v0.2
   </footer>
   <script src="/static/app.js"></script>
 </body>

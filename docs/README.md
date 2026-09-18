@@ -5,4 +5,5 @@
 | `screenshot-input.svg` | README hero / form |
 | `screenshot-report.svg` | README report |
 | `architecture.svg` | Data-flow diagram |
-| `demo.mp4` | Optional live walkthrough |
+
+These SVGs match the live UI palette (`#0c0f0d` / `#c6f54d`).
